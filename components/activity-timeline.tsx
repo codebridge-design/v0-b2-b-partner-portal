@@ -1,4 +1,4 @@
-import { cn } from "@/lib/utils"
+import { cn, formatDate } from "@/lib/utils"
 import { FileText, TicketIcon, UserPlus, Settings } from "lucide-react"
 import type { Activity } from "@/lib/mock-data"
 
@@ -27,7 +27,7 @@ export function ActivityTimeline({ activities, className }: { activities: Activi
               <p className="text-sm font-medium text-foreground">{activity.action}</p>
               <p className="text-xs text-muted-foreground mt-0.5">{activity.detail}</p>
               <p className="text-xs text-muted-foreground mt-1">
-                {activity.user} &middot; {new Date(activity.timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+                {activity.user} &middot; {formatDate(activity.timestamp, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
               </p>
             </div>
           </div>

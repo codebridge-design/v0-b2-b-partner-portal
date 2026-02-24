@@ -15,7 +15,7 @@ import {
   TableCell,
 } from "@/components/ui/table"
 import { requests, requestComments } from "@/lib/mock-data"
-import { formatNumber } from "@/lib/utils"
+import { formatNumber, formatDate } from "@/lib/utils"
 import { ArrowLeft, Copy, Download, XCircle, Clock, Send } from "lucide-react"
 import Link from "next/link"
 import { toast } from "sonner"
@@ -54,7 +54,7 @@ export default function RequestDetailPage({ params }: { params: Promise<{ id: st
             <StatusChip status={request.priority} />
           </div>
           <p className="mt-1 text-sm text-muted-foreground">
-            Submitted on {new Date(request.submittedAt).toLocaleDateString("en-US", { month: "long", day: "numeric", year: "numeric" })}
+            Submitted on {formatDate(request.submittedAt, { month: "long", day: "numeric", year: "numeric" })}
           </p>
         </div>
       </div>
@@ -144,7 +144,7 @@ export default function RequestDetailPage({ params }: { params: Promise<{ id: st
                       <span className="text-sm font-medium text-foreground">{c.user}</span>
                       <StatusChip status={c.role === "admin" ? "active" : "pending"} className="text-[10px]" />
                       <span className="text-xs text-muted-foreground">
-                        {new Date(c.timestamp).toLocaleDateString("en-US", { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
+                        {formatDate(c.timestamp, { month: "short", day: "numeric", hour: "2-digit", minute: "2-digit" })}
                       </span>
                     </div>
                     <p className="mt-1 text-sm text-muted-foreground leading-relaxed">{c.content}</p>
@@ -178,7 +178,7 @@ export default function RequestDetailPage({ params }: { params: Promise<{ id: st
                   <div>
                     <p className="text-sm text-foreground">{t.label}</p>
                     <p className="text-xs text-muted-foreground">
-                      {t.user} &middot; {new Date(t.date).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                      {t.user} &middot; {formatDate(t.date, { month: "short", day: "numeric", year: "numeric" })}
                     </p>
                   </div>
                 </div>

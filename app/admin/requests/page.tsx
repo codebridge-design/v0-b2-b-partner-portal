@@ -32,7 +32,7 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet"
 import { requests, type Request } from "@/lib/mock-data"
-import { formatNumber } from "@/lib/utils"
+import { formatNumber, formatDate } from "@/lib/utils"
 import { Search, ClipboardList, CheckCircle, XCircle, MessageSquare, Clock } from "lucide-react"
 import { toast } from "sonner"
 
@@ -114,7 +114,7 @@ export default function AdminRequestsPage() {
                       <p className="text-xs text-muted-foreground">{r.contact}</p>
                     </TableCell>
                     <TableCell className="text-sm text-muted-foreground">
-                      {new Date(r.submittedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                      {formatDate(r.submittedAt, { month: "short", day: "numeric", year: "numeric" })}
                     </TableCell>
                     <TableCell><StatusChip status={r.status} /></TableCell>
                     <TableCell><StatusChip status={r.priority} /></TableCell>
@@ -173,7 +173,7 @@ export default function AdminRequestsPage() {
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Submitted</span>
-                    <span className="text-foreground">{new Date(selectedRequest.submittedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}</span>
+                    <span className="text-foreground">{formatDate(selectedRequest.submittedAt, { month: "short", day: "numeric", year: "numeric" })}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Contact Email</span>
@@ -221,7 +221,7 @@ export default function AdminRequestsPage() {
                         <Clock className="h-3.5 w-3.5 text-muted-foreground mt-0.5 shrink-0" />
                         <div>
                           <p className="text-xs text-foreground">{entry.action}</p>
-                          <p className="text-xs text-muted-foreground">{entry.user} &middot; {new Date(entry.time).toLocaleDateString()}</p>
+                          <p className="text-xs text-muted-foreground">{entry.user} &middot; {formatDate(entry.time, { month: "short", day: "numeric", year: "numeric" })}</p>
                         </div>
                       </div>
                     ))}

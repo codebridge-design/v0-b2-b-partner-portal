@@ -32,6 +32,7 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet"
 import { tickets, type Ticket } from "@/lib/mock-data"
+import { formatDate } from "@/lib/utils"
 import { Search, Plus, TicketIcon } from "lucide-react"
 import { toast } from "sonner"
 
@@ -134,7 +135,7 @@ export default function TicketsPage() {
                     <span className="capitalize">{ticket.category}</span>
                     <span>Assigned to {ticket.assignee}</span>
                     <span className="hidden sm:inline">
-                      Updated {new Date(ticket.updatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                      Updated {formatDate(ticket.updatedAt, { month: "short", day: "numeric" })}
                     </span>
                   </div>
                 </div>
@@ -174,13 +175,13 @@ export default function TicketsPage() {
                     <div>
                       <p className="text-muted-foreground">Created</p>
                       <p className="font-medium text-foreground">
-                        {new Date(selectedTicket.createdAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                        {formatDate(selectedTicket.createdAt, { month: "short", day: "numeric", year: "numeric" })}
                       </p>
                     </div>
                     <div>
                       <p className="text-muted-foreground">Last Updated</p>
                       <p className="font-medium text-foreground">
-                        {new Date(selectedTicket.updatedAt).toLocaleDateString("en-US", { month: "short", day: "numeric", year: "numeric" })}
+                        {formatDate(selectedTicket.updatedAt, { month: "short", day: "numeric", year: "numeric" })}
                       </p>
                     </div>
                   </div>

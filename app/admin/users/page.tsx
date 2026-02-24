@@ -40,6 +40,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog"
 import { users } from "@/lib/mock-data"
+import { formatDate } from "@/lib/utils"
 import { Search, UserPlus, Users, MoreHorizontal, Pencil, Ban, Mail } from "lucide-react"
 import { toast } from "sonner"
 
@@ -138,7 +139,7 @@ export default function AdminUsersPage() {
                     </TableCell>
                     <TableCell><StatusChip status={u.status} /></TableCell>
                     <TableCell className="text-sm text-muted-foreground">
-                      {new Date(u.lastActive).toLocaleDateString("en-US", { month: "short", day: "numeric" })}
+                      {formatDate(u.lastActive, { month: "short", day: "numeric" })}
                     </TableCell>
                     <TableCell>
                       <DropdownMenu>
