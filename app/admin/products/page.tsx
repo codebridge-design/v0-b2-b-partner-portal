@@ -33,6 +33,7 @@ import {
   DialogFooter,
 } from "@/components/ui/dialog"
 import { products } from "@/lib/mock-data"
+import { formatNumber } from "@/lib/utils"
 import { Search, Plus, Package, Upload, Download, Trash2 } from "lucide-react"
 import { toast } from "sonner"
 
@@ -148,7 +149,7 @@ export default function AdminProductsPage() {
                     <TableCell className="text-sm text-muted-foreground">{p.category}</TableCell>
                     <TableCell>
                       <div className="flex items-center gap-2">
-                        <span className="text-sm text-foreground">{p.stock.toLocaleString()}</span>
+                        <span className="text-sm text-foreground">{formatNumber(p.stock)}</span>
                         <StatusChip status={p.stockStatus} />
                       </div>
                     </TableCell>

@@ -31,6 +31,7 @@ import {
   DialogDescription,
 } from "@/components/ui/dialog"
 import { products, type Product } from "@/lib/mock-data"
+import { formatNumber } from "@/lib/utils"
 import { Search, Package, ChevronLeft, ChevronRight, ShoppingCart } from "lucide-react"
 import { toast } from "sonner"
 
@@ -198,7 +199,7 @@ export default function CatalogPage() {
                       <TableCell className="text-sm text-muted-foreground">{p.brand}</TableCell>
                       <TableCell>
                         <div className="flex items-center gap-2">
-                          <span className="text-sm text-foreground">{p.stock.toLocaleString()}</span>
+                          <span className="text-sm text-foreground">{formatNumber(p.stock)}</span>
                           <StatusChip status={p.stockStatus} />
                         </div>
                       </TableCell>
@@ -282,7 +283,7 @@ export default function CatalogPage() {
                 <div>
                   <p className="text-muted-foreground">Stock</p>
                   <div className="flex items-center gap-2">
-                    <span className="font-medium text-foreground">{detailProduct.stock.toLocaleString()}</span>
+                    <span className="font-medium text-foreground">{formatNumber(detailProduct.stock)}</span>
                     <StatusChip status={detailProduct.stockStatus} />
                   </div>
                 </div>

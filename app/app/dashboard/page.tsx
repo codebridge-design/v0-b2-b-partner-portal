@@ -8,6 +8,7 @@ import { PageHeader } from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { Table, TableHeader, TableBody, TableHead, TableRow, TableCell } from "@/components/ui/table"
 import { requests, activities } from "@/lib/mock-data"
+import { formatNumber } from "@/lib/utils"
 import {
   FileText, CheckCircle, TicketIcon, DollarSign,
   Plus, Package, ArrowRight,
@@ -67,7 +68,7 @@ export default function PartnerDashboard() {
                   <TableCell className="hidden sm:table-cell text-muted-foreground text-sm">{req.company}</TableCell>
                   <TableCell><StatusChip status={req.status} /></TableCell>
                   <TableCell className="text-right text-sm font-medium text-foreground">
-                    ${req.total.toLocaleString()}
+                    ${formatNumber(req.total)}
                   </TableCell>
                 </TableRow>
               ))}

@@ -15,6 +15,7 @@ import {
   TableCell,
 } from "@/components/ui/table"
 import { requests, requestComments } from "@/lib/mock-data"
+import { formatNumber } from "@/lib/utils"
 import { ArrowLeft, Copy, Download, XCircle, Clock, Send } from "lucide-react"
 import Link from "next/link"
 import { toast } from "sonner"
@@ -79,7 +80,7 @@ export default function RequestDetailPage({ params }: { params: Promise<{ id: st
               </div>
               <div>
                 <p className="text-muted-foreground">Total Value</p>
-                <p className="font-medium text-foreground">${request.total.toLocaleString()}</p>
+                <p className="font-medium text-foreground">${formatNumber(request.total)}</p>
               </div>
             </div>
             {request.notes && (
@@ -121,7 +122,7 @@ export default function RequestDetailPage({ params }: { params: Promise<{ id: st
                       )}
                     </TableCell>
                     <TableCell className="text-right text-sm font-medium text-foreground">
-                      ${(item.qty * item.unitPrice).toLocaleString(undefined, { minimumFractionDigits: 2 })}
+                      ${formatNumber(item.qty * item.unitPrice, { minimumFractionDigits: 2 })}
                     </TableCell>
                   </TableRow>
                 ))}
@@ -209,7 +210,7 @@ export default function RequestDetailPage({ params }: { params: Promise<{ id: st
             <div className="space-y-3 text-sm">
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Subtotal</span>
-                <span className="text-foreground">${request.total.toLocaleString()}</span>
+                <span className="text-foreground">${formatNumber(request.total)}</span>
               </div>
               <div className="flex justify-between">
                 <span className="text-muted-foreground">Items</span>
@@ -217,7 +218,7 @@ export default function RequestDetailPage({ params }: { params: Promise<{ id: st
               </div>
               <div className="border-t border-border pt-3 flex justify-between">
                 <span className="font-medium text-foreground">Total</span>
-                <span className="text-lg font-semibold text-foreground">${request.total.toLocaleString()}</span>
+                <span className="text-lg font-semibold text-foreground">${formatNumber(request.total)}</span>
               </div>
             </div>
           </div>

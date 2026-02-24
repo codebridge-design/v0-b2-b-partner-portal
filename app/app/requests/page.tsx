@@ -18,6 +18,7 @@ import {
   TableCell,
 } from "@/components/ui/table"
 import { requests } from "@/lib/mock-data"
+import { formatNumber } from "@/lib/utils"
 import { Search, Plus, FileText, ArrowUpDown } from "lucide-react"
 
 const statusTabs = ["all", "in-review", "approved", "rejected", "submitted", "draft"] as const
@@ -123,7 +124,7 @@ export default function RequestsPage() {
                     </TableCell>
                     <TableCell><StatusChip status={r.status} /></TableCell>
                     <TableCell><StatusChip status={r.priority} /></TableCell>
-                    <TableCell className="text-right text-sm font-medium text-foreground">${r.total.toLocaleString()}</TableCell>
+                    <TableCell className="text-right text-sm font-medium text-foreground">${formatNumber(r.total)}</TableCell>
                     <TableCell className="text-right text-sm text-muted-foreground">{r.itemCount}</TableCell>
                   </TableRow>
                 ))}
@@ -145,7 +146,7 @@ export default function RequestsPage() {
                 <div className="mt-2 flex items-center gap-4 text-xs text-muted-foreground">
                   <span>{new Date(r.submittedAt).toLocaleDateString("en-US", { month: "short", day: "numeric" })}</span>
                   <StatusChip status={r.priority} />
-                  <span className="ml-auto font-medium text-foreground">${r.total.toLocaleString()}</span>
+                  <span className="ml-auto font-medium text-foreground">${formatNumber(r.total)}</span>
                 </div>
               </Link>
             ))}

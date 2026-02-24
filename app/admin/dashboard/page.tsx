@@ -7,6 +7,7 @@ import { ActivityTimeline } from "@/components/activity-timeline"
 import { PageHeader } from "@/components/page-header"
 import { Button } from "@/components/ui/button"
 import { requests, activities } from "@/lib/mock-data"
+import { formatNumber } from "@/lib/utils"
 import {
   ClipboardList,
   Users,
@@ -68,7 +69,7 @@ export default function AdminDashboard() {
                     <p className="mt-0.5 text-xs text-muted-foreground">{r.company} &middot; {r.contact}</p>
                   </div>
                   <div className="text-right">
-                    <p className="text-sm font-medium text-foreground">${r.total.toLocaleString()}</p>
+                    <p className="text-sm font-medium text-foreground">${formatNumber(r.total)}</p>
                     <p className="text-xs text-muted-foreground">{r.itemCount} items</p>
                   </div>
                 </div>

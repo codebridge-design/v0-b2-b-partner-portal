@@ -16,6 +16,7 @@ import {
   SelectValue,
 } from "@/components/ui/select"
 import { products } from "@/lib/mock-data"
+import { formatNumber } from "@/lib/utils"
 import { Trash2, Plus, Upload, ArrowLeft } from "lucide-react"
 import Link from "next/link"
 import { toast } from "sonner"
@@ -319,7 +320,7 @@ export default function NewRequestPage() {
                 </div>
                 <div className="border-t border-border pt-3 flex items-center justify-between">
                   <span className="text-muted-foreground font-medium">Estimated Total</span>
-                  <span className="text-lg font-semibold text-foreground">${estimatedTotal.toLocaleString(undefined, { minimumFractionDigits: 2 })}</span>
+                  <span className="text-lg font-semibold text-foreground">${formatNumber(estimatedTotal, { minimumFractionDigits: 2 })}</span>
                 </div>
               </div>
             </div>

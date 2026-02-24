@@ -32,6 +32,7 @@ import {
   SheetDescription,
 } from "@/components/ui/sheet"
 import { requests, type Request } from "@/lib/mock-data"
+import { formatNumber } from "@/lib/utils"
 import { Search, ClipboardList, CheckCircle, XCircle, MessageSquare, Clock } from "lucide-react"
 import { toast } from "sonner"
 
@@ -117,7 +118,7 @@ export default function AdminRequestsPage() {
                     </TableCell>
                     <TableCell><StatusChip status={r.status} /></TableCell>
                     <TableCell><StatusChip status={r.priority} /></TableCell>
-                    <TableCell className="text-right text-sm font-medium text-foreground">${r.total.toLocaleString()}</TableCell>
+                    <TableCell className="text-right text-sm font-medium text-foreground">${formatNumber(r.total)}</TableCell>
                     <TableCell className="text-right text-sm text-muted-foreground">{r.itemCount}</TableCell>
                   </TableRow>
                 ))}
@@ -137,7 +138,7 @@ export default function AdminRequestsPage() {
                 </div>
                 <div className="mt-2 flex items-center gap-3 text-xs text-muted-foreground">
                   <StatusChip status={r.priority} />
-                  <span className="ml-auto font-medium text-foreground">${r.total.toLocaleString()}</span>
+                  <span className="ml-auto font-medium text-foreground">${formatNumber(r.total)}</span>
                 </div>
               </button>
             ))}
@@ -164,7 +165,7 @@ export default function AdminRequestsPage() {
                 <div className="space-y-3 text-sm">
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Total Value</span>
-                    <span className="font-medium text-foreground">${selectedRequest.total.toLocaleString()}</span>
+                    <span className="font-medium text-foreground">${formatNumber(selectedRequest.total)}</span>
                   </div>
                   <div className="flex justify-between">
                     <span className="text-muted-foreground">Items</span>
@@ -191,7 +192,7 @@ export default function AdminRequestsPage() {
                           <p className="text-xs text-muted-foreground">{item.sku} &middot; Qty: {item.qty}</p>
                         </div>
                         <div className="text-right">
-                          <p className="font-medium text-foreground">${(item.qty * item.unitPrice).toLocaleString()}</p>
+                          <p className="font-medium text-foreground">${formatNumber(item.qty * item.unitPrice)}</p>
                           {item.requestedPrice && (
                             <p className="text-xs text-warning">Asked: ${item.requestedPrice.toFixed(2)}/unit</p>
                           )}
